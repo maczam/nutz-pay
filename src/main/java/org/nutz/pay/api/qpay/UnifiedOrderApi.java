@@ -7,12 +7,11 @@ import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.pay.bean.qpay.req.UnifiedOrderReq;
 import org.nutz.pay.bean.qpay.resp.UnifiedOrderResp;
-import org.nutz.pay.bean.weixin.resp.UnifiedorderResp;
 import org.nutz.pay.util.HttpUtil;
 
 /**
- * 完成<a href="https://qpay.qq.com/qpaywiki/showdocument.php?pid=38&docid=58>统一订单</a>功能
- * Created by Jianghao on 2017/4/17.
+ * <a href="https://qpay.qq.com/qpaywiki/showdocument.php?pid=38&docid=58>统一订单</a>功能
+ * Created by Howe on 2017/4/17.
  *
  * @author Howe(howechiang@gmail.com)
  */

@@ -10,8 +10,8 @@ import org.nutz.pay.bean.weixin.resp.UnifiedorderResp;
 import org.nutz.pay.util.HttpUtil;
 
 /**
- * 完成<a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1">统一订单</a>功能
- * Created by Jianghao on 2017/4/17.
+ * <a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1">统一订单</a>功能
+ * Created by Howe on 2017/4/17.
  *
  * @author Howe(howechiang@gmail.com)
  */

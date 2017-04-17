@@ -2,7 +2,7 @@ package org.nutz.pay.bean.weixin.req;
 
 /**
  * <a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1">统一下单</a>
- * Created by Jianghao on 2017/4/17.
+ * Created by Howe on 2017/4/17.
  *
  * @author Howe(howechiang@gmail.com)
  */

@@ -2,7 +2,7 @@ package org.nutz.pay.bean.qpay.resp;
 
 /**
  * 在return_code为成功时有返回
- * Created by Jianghao on 2017/4/17.
+ * Created by Howe on 2017/4/17.
  *
  * @author Howe(howechiang@gmail.com)
  */
