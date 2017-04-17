@@ -17,14 +17,15 @@ Nutz的支付便捷包
 [扫码支付](https://qpay.qq.com/qpaywiki/showdocument.php?pid=38&docid=163)
 [公众号支付](https://qpay.qq.com/qpaywiki/showdocument.php?pid=38&docid=164)
 
-微信支付应该跟QQ钱包支付接口类似，准备一起实现。
+**微信支付应该跟QQ钱包支付接口类似，准备一起实现。**
 
 #### 银联在线
 [网关支付](https://merchant.unionpay.com/join/product/detail?id=1)
 [二维码支付](https://merchant.unionpay.com/join/product/detail?id=89)
 
 #### 京东支付
-如果能找到文档就做，哈哈哈
+*如果能找到文档就做，哈哈哈*
+
 [京东网关支付](http://www.chinabank.com.cn/product/payment_gateway.jsp)
 
 #### 翼支付
@@ -32,4 +33,5 @@ Nutz的支付便捷包
 
 #### 话费卡、游戏点卡、中石油/石化加油卡兑换
 [易兑换](https://www.yiduihuan.com/)
+
 这部分我还没分出来，最后实现。
