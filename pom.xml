@@ -6,7 +6,9 @@
 
     <groupId>org.nutz</groupId>
     <artifactId>nutz-pay</artifactId>
-    <version>1.r.62-SNAPSHOT</version>
+    <version>${nutz.version}</version>
+    <name>Aliyun Maven Webapp</name>
+    <url>http://maven.aliyun.com</url>
 
     <dependencies>
         <dependency>
@@ -18,7 +20,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <nutz.version>1.r.61</nutz.version>
+        <nutz.version>1.r.62-SNAPSHOT</nutz.version>
     </properties>
 
     <issueManagement>
@@ -73,6 +75,24 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <id>nutz</id>
+            <url>https://jfrog.nutz.cn/artifactory/jcenter</url>
+        </repository>
+        <repository>
+            <id>nutz-snapshots</id>
+            <url>https://jfrog.nutz.cn/artifactory/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
@@ -80,8 +100,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>

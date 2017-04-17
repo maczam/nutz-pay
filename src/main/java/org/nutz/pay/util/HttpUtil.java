@@ -5,6 +5,7 @@ import org.nutz.json.Json;
 import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -139,4 +140,5 @@ public class HttpUtil {
             return resp.getContent();
         }
     }
+
 }
