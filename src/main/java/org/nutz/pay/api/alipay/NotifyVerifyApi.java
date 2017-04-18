@@ -24,7 +24,6 @@ public class NotifyVerifyApi {
      * @return 校验结果
      */
     public static boolean notifyVerify(NotifyVerifyReq req) {
-
         try {
             String result = checkParams(req);
             if (Strings.isEmpty(result)) {
@@ -52,12 +51,11 @@ public class NotifyVerifyApi {
      * @return 校验结果
      */
     public static String checkParams(NotifyVerifyReq req) {
-
-        if (Strings.isEmail(req.getService())) {
+        if (Strings.isEmpty(req.getService())) {
             return "接口名称不能为空";
         } else if (!Strings.equalsIgnoreCase("notify_verify", req.getService())) {
             return "接口名称错误，应该为notify_verify";
-        } else if (Strings.isEmail(req.getPartner())) {
+        } else if (Strings.isEmpty(req.getPartner())) {
             return "合作者身份ID不能为空";
         } else if (Strings.isEmpty(req.getNotify_id())) {
             return "通知校验ID不能为空";

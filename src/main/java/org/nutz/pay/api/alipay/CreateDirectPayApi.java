@@ -1,5 +1,7 @@
 package org.nutz.pay.api.alipay;
 
+import java.util.Map;
+
 import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
@@ -7,8 +9,6 @@ import org.nutz.log.Logs;
 import org.nutz.pay.bean.alipay.req.CreateDirectPayReq;
 import org.nutz.pay.util.Util;
 import org.nutz.pay.util.alipay.Signature;
-
-import java.util.Map;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.AF7oYg&treeId=62&articleId=104743&docType=1">即时到账交易接口</a>
@@ -27,7 +27,6 @@ public class CreateDirectPayApi {
      * @return 跳转页面
      */
     public static String createDirectPay(CreateDirectPayReq req) {
-
         try {
             String result = checkParams(req);
             if (Strings.isEmpty(result)) {
@@ -49,10 +48,9 @@ public class CreateDirectPayApi {
      * @return 校验结果
      */
     public static String checkParams(CreateDirectPayReq req) {
-
-        if (Strings.isEmail(req.getService())) {
+        if (Strings.isEmpty(req.getService())) {
             return "接口名称不能为空";
-        } else if (Strings.isEmail(req.getPartner())) {
+        } else if (Strings.isEmpty(req.getPartner())) {
             return "合作者身份ID不能为空";
         } else if (!Strings.equalsIgnoreCase("create_direct_pay_by_user", req.getService())) {
             return "接口名称错误，应该为create_direct_pay_by_user";
@@ -97,7 +95,6 @@ public class CreateDirectPayApi {
      * @return 签名
      */
     public static String getSign(CreateDirectPayReq req, String k) {
-
         if (Strings.isEmpty(checkParams(req))) {
             Map<String, Object> params = Lang.obj2nutmap(req);
             String s = Util.buildParmas(params, new String[]{"sign", "sign_type"});

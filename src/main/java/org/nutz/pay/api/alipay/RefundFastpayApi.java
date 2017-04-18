@@ -1,5 +1,7 @@
 package org.nutz.pay.api.alipay;
 
+import java.util.Map;
+
 import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
@@ -8,8 +10,6 @@ import org.nutz.pay.bean.alipay.req.RefundFastpayReq;
 import org.nutz.pay.util.HttpUtil;
 import org.nutz.pay.util.Util;
 import org.nutz.pay.util.alipay.Signature;
-
-import java.util.Map;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.JyEgac&treeId=62&articleId=104744&docType=1">即时到账有密退款接口</a>
@@ -28,7 +28,6 @@ public class RefundFastpayApi {
      * @return 反馈结果
      */
     public static String refundFastpay(RefundFastpayReq req) {
-
         try {
             String result = checkParams(req);
             if (Strings.isEmpty(result)) {
@@ -45,10 +44,9 @@ public class RefundFastpayApi {
     }
 
     public static String checkParams(RefundFastpayReq req) {
-
-        if (Strings.isEmail(req.getService())) {
+        if (Strings.isEmpty(req.getService())) {
             return "接口名称不能为空";
-        } else if (Strings.isEmail(req.getPartner())) {
+        } else if (Strings.isEmpty(req.getPartner())) {
             return "合作者身份ID不能为空";
         } else if (!Strings.equalsIgnoreCase("refund_fastpay_by_platform_pwd", req.getService())) {
             return "接口名称错误，应该为refund_fastpay_by_platform_pwd";
