@@ -53,7 +53,7 @@ public class CreateDirectPayApi {
         if (Strings.isEmail(req.getService())) {
             return "接口名称不能为空";
         } else if (Strings.isEmail(req.getPartner())) {
-            return "合作者身份ID";
+            return "合作者身份ID不能为空";
         } else if (!Strings.equalsIgnoreCase("create_direct_pay_by_user", req.getService())) {
             return "接口名称错误，应该为create_direct_pay_by_user";
         } else if (Strings.isEmpty(req.get_input_charset())) {

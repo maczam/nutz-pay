@@ -49,7 +49,7 @@ public class RefundFastpayApi {
         if (Strings.isEmail(req.getService())) {
             return "接口名称不能为空";
         } else if (Strings.isEmail(req.getPartner())) {
-            return "合作者身份ID";
+            return "合作者身份ID不能为空";
         } else if (!Strings.equalsIgnoreCase("refund_fastpay_by_platform_pwd", req.getService())) {
             return "接口名称错误，应该为refund_fastpay_by_platform_pwd";
         } else if (Strings.isEmpty(req.get_input_charset())) {

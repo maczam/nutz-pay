@@ -23,4 +23,48 @@ package org.nutz.pay.bean.alipay.resp;
  * 能够正常访问的IP地址：http://121.1.1.255/alipay/return_url.php
  */
 public class RefundFastpayAsyncResp extends Base {
+
+
+    /**
+     * 退款批次号
+     * 原请求退款批次号。
+     * 不可空
+     */
+    private String batch_no;
+
+    public String getBatch_no() {
+        return batch_no;
+    }
+
+    public void setBatch_no(String batch_no) {
+        this.batch_no = batch_no;
+    }
+
+    /**
+     * 退款成功总数
+     * 退交易成功的笔数。
+     * 0<= success_num<= 总退款笔数。
+     * 不可空
+     */
+    private String success_num;
+
+    public String getSuccess_num() {
+        return success_num;
+    }
+
+    public void setSuccess_num(String success_num) {
+        this.success_num = success_num;
+    }
+
+    /**
+     * 退款结果明细
+     * 退款结果明细。
+     * 退手续费结果返回格式：交易号^退款金额^处理结果$退费账号^退费账户ID^退费金额^处理结果；
+     * 不退手续费结果返回格式：交易号^退款金额^处理结果。
+     * 若退款申请提交成功，处理结果会返回“SUCCESS”。
+     * 若提交失败，退款的处理结果中会有报错码，参见<a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.yVU00p&treeId=62&articleId=104744&docType=1#s4">业务错误码</a>。
+     * 可空
+     *
+     */
+    private String result_details;
 }

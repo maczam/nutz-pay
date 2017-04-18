@@ -9,6 +9,21 @@ package org.nutz.pay.bean.alipay.req;
 public class Base {
 
     /**
+     * 支付渠道
+     * 枚举名称              枚举说明
+     * directPay            支付宝账户余额
+     * moneyFund            余额宝
+     * cartoon              卡通
+     * bankPay              网银
+     * cash                 现金
+     * creditCardExpress    信用卡快捷
+     * debitCardExpress     借记卡快捷
+     * coupon               红包
+     * point                积分
+     * voucher              购物券
+     */
+
+    /**
      * 接口名称
      * 接口名称
      * 不可空
