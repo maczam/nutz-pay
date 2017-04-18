@@ -4,36 +4,38 @@ import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
-import org.nutz.pay.bean.alipay.req.CreateDirectPayReq;
+import org.nutz.pay.bean.alipay.req.RefundFastpayReq;
+import org.nutz.pay.util.HttpUtil;
 import org.nutz.pay.util.Util;
 import org.nutz.pay.util.alipay.Signature;
 
 import java.util.Map;
 
 /**
- * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.AF7oYg&treeId=62&articleId=104743&docType=1">即时到账交易接口</a>
- * Created by Howe on 2017/4/17.
+ * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.JyEgac&treeId=62&articleId=104744&docType=1">即时到账有密退款接口</a>
+ * Created by Howe on 2017/4/18.
  *
  * @author Howe(howechiang@gmail.com)
  */
-public class CreateDirectPayApi {
+public class RefundFastpayApi {
 
     private static final Log log = Logs.get();
 
     /**
-     * 构建即时到账跳转页面
+     * 提交即时到账有密退款请求
      *
      * @param req 参数
-     * @return 跳转页面
+     * @return 反馈结果
      */
-    public static String createDirectPay(CreateDirectPayReq req) {
+    public static String refundFastpay(RefundFastpayReq req) {
 
         try {
             String result = checkParams(req);
             if (Strings.isEmpty(result)) {
-                return "https://mapi.alipay.com/gateway.do?" + Util.buildParmas(Lang.obj2nutmap(req));
+                Map<String, Object> params = Lang.obj2nutmap(req);
+                return HttpUtil.post("https://mapi.alipay.com/gateway.do", params);
             } else {
-                log.error("支付宝即时到账交易接口参数校验异常: " + result);
+                log.error("支付宝即时到账有密退款接口参数校验异常: " + result);
                 return null;
             }
         } catch (Exception e) {
@@ -42,20 +44,14 @@ public class CreateDirectPayApi {
         }
     }
 
-    /**
-     * 校验参数
-     *
-     * @param req 参数
-     * @return 校验结果
-     */
-    public static String checkParams(CreateDirectPayReq req) {
+    public static String checkParams(RefundFastpayReq req) {
 
         if (Strings.isEmail(req.getService())) {
             return "接口名称不能为空";
         } else if (Strings.isEmail(req.getPartner())) {
             return "合作者身份ID";
-        } else if (!Strings.equalsIgnoreCase("create_direct_pay_by_user", req.getService())) {
-            return "接口名称错误，应该为create_direct_pay_by_user";
+        } else if (!Strings.equalsIgnoreCase("refund_fastpay_by_platform_pwd", req.getService())) {
+            return "接口名称错误，应该为refund_fastpay_by_platform_pwd";
         } else if (Strings.isEmpty(req.get_input_charset())) {
             return "参数编码字符集不能为空";
         } else if (!Strings.equalsIgnoreCase("UTF-8", req.get_input_charset())) {
@@ -63,27 +59,24 @@ public class CreateDirectPayApi {
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA", req.getSign_type())
-                || !Strings.equalsIgnoreCase("MD5", req.getSign_type())
+                || !Strings.equalsIgnoreCase("DSA", req.getSign_type())
                 || !Strings.equalsIgnoreCase("MD5", req.getSign_type())) {
             return "签名方式只支持RSA、DSA、MD5";
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";
         } else if (Strings.isEmpty(req.getNotify_url())) {
             return "服务器异步通知页面路径不能为空";
-        } else if (Strings.isEmpty(req.getReturn_url())) {
-            return "页面跳转同步通知页面路径不能为空";
-        } else if (Strings.isEmpty(req.getOut_trade_no())) {
-            return "商户网站唯一订单号不能为空";
-        } else if (Strings.isEmpty(req.getSubject())) {
-            return "商品名称不能为空";
-        } else if (Strings.isEmpty(req.getPayment_type())) {
-            return "支付类型不能为空";
-        } else if (Lang.isEmpty(req.getTotal_fee())) {
-            return "交易金额不能为空";
-        } else if (!Strings.isEmpty(req.getSeller_id())
-                || !Strings.isEmpty(req.getSeller_email())
-                || !Strings.isEmpty(req.getSeller_account_name())) {
-            return "seller_id、seller_account_name、seller_email三个参数至少必须传递一个";
+        } else if (!Strings.isEmpty(req.getSeller_user_id())
+                || !Strings.isEmpty(req.getSeller_email())) {
+            return "seller_email、seller_user_id两者必填一个";
+        } else if (Strings.isEmpty(req.getRefund_date())) {
+            return "退款请求时间不能为空";
+        } else if (Strings.isEmpty(req.getBatch_no())) {
+            return "退款批次号不能为空";
+        } else if (Strings.isEmpty(req.getBatch_num())) {
+            return "总笔数不能为空";
+        } else if (Strings.isEmpty(req.getDetail_data())) {
+            return "单笔数据集不能为空";
         } else {
             return "";
         }
@@ -96,7 +89,7 @@ public class CreateDirectPayApi {
      * @param k   密钥
      * @return 签名
      */
-    public static String getSign(CreateDirectPayReq req, String k) {
+    public static String getSign(RefundFastpayReq req, String k) {
 
         if (Strings.isEmpty(checkParams(req))) {
             Map<String, Object> params = Lang.obj2nutmap(req);
@@ -106,7 +99,7 @@ public class CreateDirectPayApi {
                     || Strings.equalsIgnoreCase(req.getSign_type(), "DSA")) {
                 return Signature.sign(s, k, req.getSign_type());
             } else {
-                log.error("支付宝即时到账交易接口签名方式只支持RSA、DSA、MD5");
+                log.error("支付宝即时到账有密退款接口签名方式只支持RSA、DSA、MD5");
                 return null;
             }
         } else {

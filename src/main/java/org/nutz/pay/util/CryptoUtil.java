@@ -10,6 +10,8 @@ import java.net.URLEncoder;
 /**
  * 加密工具类
  * Created by howe on 2017/4/17.
+ *
+ * @author Howe(howechiang@gmail.com)
  */
 public class CryptoUtil {
 
@@ -44,6 +46,21 @@ public class CryptoUtil {
     }
 
     /**
+     * Base64加密
+     *
+     * @param b 待加密字符串
+     * @return 加密后字符串
+     */
+    public static String encodeBase64(byte[] b) {
+
+        if (Lang.isEmpty(b)) {
+            return null;
+        } else {
+            return Base64.encodeToString(b, true);
+        }
+    }
+
+    /**
      * Base64解密
      *
      * @param s 待解密字符串
@@ -59,12 +76,27 @@ public class CryptoUtil {
     }
 
     /**
+     * Base64解密
+     *
+     * @param s 待解密字符串
+     * @return 解密后字符串
+     */
+    public static byte[] decodeBase64Byte(String s) {
+
+        if (Strings.isEmpty(s)) {
+            return null;
+        } else {
+            return Base64.decode(s.getBytes());
+        }
+    }
+
+    /**
      * URL编码
      *
      * @param s 待编码字符串
      * @return 编码后字符串
      */
-    public static String encodeUrl(String s) {
+    public static String encodeURL(String s) {
 
         try {
             if (Strings.isEmpty(s)) {
@@ -79,10 +111,11 @@ public class CryptoUtil {
 
     /**
      * URL解码
+     *
      * @param s 待解码的字符串
      * @return 解码后的字符串
      */
-    public static String decodeUrl(String s) {
+    public static String decodeURL(String s) {
 
         try {
 

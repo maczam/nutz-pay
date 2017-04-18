@@ -1,6 +1,7 @@
 package org.nutz.pay.bean.alipay.req;
 
 /**
+ * 即时到账交易请求参数
  * Created by Howe on 2017/4/17.
  *
  * @author Howe(howechiang@gmail.com)

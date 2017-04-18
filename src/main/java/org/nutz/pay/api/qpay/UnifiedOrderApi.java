@@ -49,7 +49,7 @@ public class UnifiedOrderApi {
      * @param req
      * @return
      */
-    protected String checkParams(UnifiedOrderReq req) {
+    public static String checkParams(UnifiedOrderReq req) {
 
         if (Strings.isEmpty(req.getMch_id())) {
             return "商户号不能为空";

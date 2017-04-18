@@ -44,7 +44,12 @@ public class UnifiedorderApi {
         }
     }
 
-    protected String checkParams(UnifiedorderReq req) {
+    /**
+     * 参数校验
+     * @param req
+     * @return
+     */
+    public static String checkParams(UnifiedorderReq req) {
 
         if (Strings.isEmpty(req.getAppid())) {
             return "公众账号ID不能为空";
