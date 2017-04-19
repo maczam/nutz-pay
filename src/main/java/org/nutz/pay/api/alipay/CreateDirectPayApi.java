@@ -6,9 +6,9 @@ import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
-import org.nutz.pay.bean.alipay.req.CreateDirectPayReq;
+import org.nutz.pay.bean.alipay.req.pc.CreateDirectPayReq;
 import org.nutz.pay.util.Util;
-import org.nutz.pay.util.alipay.Signature;
+import org.nutz.pay.util.alipay.pc.Signature;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.AF7oYg&treeId=62&articleId=104743&docType=1">即时到账交易接口</a>
@@ -54,10 +54,6 @@ public class CreateDirectPayApi {
             return "合作者身份ID不能为空";
         } else if (!Strings.equalsIgnoreCase("create_direct_pay_by_user", req.getService())) {
             return "接口名称错误，应该为create_direct_pay_by_user";
-        } else if (Strings.isEmpty(req.get_input_charset())) {
-            return "参数编码字符集不能为空";
-        } else if (!Strings.equalsIgnoreCase("UTF-8", req.get_input_charset())) {
-            return "参数编码字符集就准备支持UTF-8";
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA", req.getSign_type())
@@ -74,8 +70,6 @@ public class CreateDirectPayApi {
             return "商户网站唯一订单号不能为空";
         } else if (Strings.isEmpty(req.getSubject())) {
             return "商品名称不能为空";
-        } else if (Strings.isEmpty(req.getPayment_type())) {
-            return "支付类型不能为空";
         } else if (Lang.isEmpty(req.getTotal_fee())) {
             return "交易金额不能为空";
         } else if (!Strings.isEmpty(req.getSeller_id())

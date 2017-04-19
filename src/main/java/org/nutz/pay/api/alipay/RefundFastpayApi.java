@@ -6,10 +6,10 @@ import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
-import org.nutz.pay.bean.alipay.req.RefundFastpayReq;
+import org.nutz.pay.bean.alipay.req.pc.RefundFastpayReq;
 import org.nutz.pay.util.HttpUtil;
 import org.nutz.pay.util.Util;
-import org.nutz.pay.util.alipay.Signature;
+import org.nutz.pay.util.alipay.pc.Signature;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.JyEgac&treeId=62&articleId=104744&docType=1">即时到账有密退款接口</a>
@@ -50,10 +50,6 @@ public class RefundFastpayApi {
             return "合作者身份ID不能为空";
         } else if (!Strings.equalsIgnoreCase("refund_fastpay_by_platform_pwd", req.getService())) {
             return "接口名称错误，应该为refund_fastpay_by_platform_pwd";
-        } else if (Strings.isEmpty(req.get_input_charset())) {
-            return "参数编码字符集不能为空";
-        } else if (!Strings.equalsIgnoreCase("UTF-8", req.get_input_charset())) {
-            return "参数编码字符集就准备支持UTF-8";
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA", req.getSign_type())

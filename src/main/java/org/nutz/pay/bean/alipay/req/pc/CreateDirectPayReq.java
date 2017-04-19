@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req;
+package org.nutz.pay.bean.alipay.req.pc;
 
 /**
  * 即时到账交易请求参数
@@ -44,14 +44,10 @@ public class CreateDirectPayReq extends Base {
      * 只支持取值为1（商品购买）。
      * 不可空
      */
-    private String payment_type;
+    private String payment_type = "1";
 
     public String getPayment_type() {
         return payment_type;
-    }
-
-    public void setPayment_type(String payment_type) {
-        this.payment_type = payment_type;
     }
 
     /**

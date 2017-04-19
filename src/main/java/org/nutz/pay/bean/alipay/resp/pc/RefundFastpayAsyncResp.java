@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.resp;
+package org.nutz.pay.bean.alipay.resp.pc;
 
 /**
  * 即时到账有密退款异步回传

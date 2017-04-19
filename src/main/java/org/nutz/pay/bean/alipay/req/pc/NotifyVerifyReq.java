@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req;
+package org.nutz.pay.bean.alipay.req.pc;
 
 /**
  * 支付宝通知校验接口

@@ -4,7 +4,7 @@ import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
-import org.nutz.pay.bean.alipay.req.NotifyVerifyReq;
+import org.nutz.pay.bean.alipay.req.pc.NotifyVerifyReq;
 import org.nutz.pay.util.Util;
 
 /**

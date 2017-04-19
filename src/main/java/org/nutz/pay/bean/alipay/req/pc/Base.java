@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req;
+package org.nutz.pay.bean.alipay.req.pc;
 
 /**
  * 支付宝即时到账基础字段
@@ -58,14 +58,10 @@ public class Base {
      * 商户网站使用的编码格式，如UTF-8、GBK、GB2312等。
      * 不可空
      */
-    private String _input_charset;
+    private String _input_charset = "UTF-8";
 
     public String get_input_charset() {
         return _input_charset;
-    }
-
-    public void set_input_charset(String _input_charset) {
-        this._input_charset = _input_charset;
     }
 
     /**

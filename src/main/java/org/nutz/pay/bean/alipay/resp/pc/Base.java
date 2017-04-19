@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.resp;
+package org.nutz.pay.bean.alipay.resp.pc;
 
 /**
  * Created by Howe on 2017/4/18.

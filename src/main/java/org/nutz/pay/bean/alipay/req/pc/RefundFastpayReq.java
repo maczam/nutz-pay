@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req;
+package org.nutz.pay.bean.alipay.req.pc;
 
 /**
  * 即时到账有密退款请求参数
