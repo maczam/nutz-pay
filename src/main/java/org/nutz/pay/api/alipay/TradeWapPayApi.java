@@ -23,6 +23,28 @@ public class TradeWapPayApi {
 
     private static final Log log = Logs.get();
 
+    /**
+     * 构建手机网站支付跳转页面
+     *
+     * @param req 参数
+     * @return 跳转页面
+     */
+    public static String tradeWapPay(Base req){
+
+        try {
+            String result = checkParams(req);
+            if (Strings.isEmpty(result)) {
+                return "https://openapi.alipay.com/gateway.do?" + Util.buildParmas(Lang.obj2nutmap(req));
+            } else {
+                log.error("支付宝手机网站支付接口参数校验异常: " + result);
+                return null;
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
     public static String checkParams(Base req) {
 
         if (Strings.isEmpty(req.getApp_id())) {
