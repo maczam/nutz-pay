@@ -1,5 +1,6 @@
 package org.nutz.pay.util.alipay.pc;
 
+import com.alipay.api.internal.util.AlipaySignature;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
@@ -167,5 +168,24 @@ public class Signature {
                 return false;
             }
         }
+    }
+
+    public static String sign(String s, String k, String t, String c) {
+        try {
+            if (Strings.isEmpty(s) || Strings.isEmpty(k) || Strings.isEmpty(t) || Strings.isEmpty(c)) {
+                return null;
+            } else if (Strings.equalsIgnoreCase(t, "RSA")) {
+                return AlipaySignature.rsaSign(s, k, c);
+            } else if (Strings.equalsIgnoreCase(t, "RSA2")) {
+                return AlipaySignature.rsa256Sign(s, k, c);
+            } else {
+                log.error("Alipay verify 加密方式错误, 只支持RSA2、RSA.");
+                return null;
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
     }
 }
