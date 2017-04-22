@@ -178,14 +178,14 @@ public class TradeWapPay {
      * 格式:{"sys_service_provider_id":"2088511833207846"}
      * 选填
      */
-    private Map<String, Object> extend_params;
+    private TradeWapPayExpand extend_params;
 
-    public Map<String, Object> getExtend_params() {
-        return extend_params;
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
     }
 
-    public void setExtend_params(Map<String, Object> extend_params) {
-        this.extend_params = extend_params;
+    public TradeWapPayExpand getExtend_params() {
+        return extend_params;
     }
 
     /**

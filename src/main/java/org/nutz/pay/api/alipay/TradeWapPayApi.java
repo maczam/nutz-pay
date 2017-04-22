@@ -45,6 +45,11 @@ public class TradeWapPayApi {
         }
     }
 
+    /**
+     * 校验参数
+     * @param req
+     * @return
+     */
     public static String checkParams(Base req) {
 
         if (Strings.isEmpty(req.getApp_id())) {

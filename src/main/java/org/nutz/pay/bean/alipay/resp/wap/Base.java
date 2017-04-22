@@ -33,6 +33,20 @@ public class Base {
      *                                                                                 isv.invalid-format                 无效的数据格式                      检查入参format，目前只支持json和xml 2种格式
      *                                                                                 isv.invalid-signature-type         无效的签名类型                      检查入参sign_type,目前只支持RSA,RSA2,HMAC_SHA1
      *                                                                                 isv.invalid-signature              无效签名                            1.公私钥是否是一对; 2.检查公钥上传是否与私钥匹配; 3.存在中文需要做urlencode; 4.签名算法是否无误
+     *                                                                                 isv.invalid-encrypt-type           无效的加密类型                      检查入参encrypt_type，目前只支持AES
+     *                                                                                 isv.invalid-encrypt                解密异常                            重试
+     *                                                                                 isv.invalid-app-id                 无效的appId参数                     检查入参app_id，app_id不存在，或者未上线
+     *                                                                                 isv.invalid-timestamp              非法的时间戳参数                    时间戳参数timestamp非法，请检查格式需要为"yyyy-MM-dd HH:mm:ss"
+     *                                                                                 isv.invalid-charset                字符集错误                          请求参数charset错误，目前支持格式：GBK,UTF-8
+     *                                                                                 isv.invalid-digest                 摘要错误                            检查请求参数，文件摘要参数必填
+     *                                                                                 isv.decryption-error-not-valid-encrypt-type 解密出错，不支持的加密算法  检查入参encrypt_type，目前只支持AES
+     *                                                                                 sv.decryption-error-not-valid-encrypt-key  解密出错, 未配置加密密钥或加密密钥格式错误  没有配置加密密钥
+     *                                                                                 isv.decryption-error-unknown       解密出错，未知异常                  重试
+     *                                                                                 isv.missing-signature-config       验签出错, 未配置对应签名算法的公钥或者证书  没有配置应用公钥
+     *                                                                                 v.not-support-app-auth             本接口不支持第三方代理调用          本接口不支持第三方代理调用
+     *  40004           业务处理失败      对应业务错误码，明细错误码和解决方案请参见具体的API接口文档
+     *  40006	        权限不足                                                       isv.insufficient-isv-permissions	   ISV权限不足	                      请检查配置的账户是否有当前接口权限
+     *                                                                                 isv.insufficient-user-permissions   用户权限不足	                      代理的商户没有当前接口权限
      */
 
     /**
