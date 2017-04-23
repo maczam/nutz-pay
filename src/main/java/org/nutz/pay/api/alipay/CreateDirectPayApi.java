@@ -12,6 +12,7 @@ import org.nutz.pay.util.alipay.pc.Signature;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.AF7oYg&treeId=62&articleId=104743&docType=1">即时到账交易接口</a>
+ * create_direct_pay_by_user
  * Created by Howe on 2017/4/17.
  *
  * @author Howe(howechiang@gmail.com)
@@ -57,8 +58,8 @@ public class CreateDirectPayApi {
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA", req.getSign_type())
-                || !Strings.equalsIgnoreCase("MD5", req.getSign_type())
-                || !Strings.equalsIgnoreCase("MD5", req.getSign_type())) {
+                && !Strings.equalsIgnoreCase("MD5", req.getSign_type())
+                && !Strings.equalsIgnoreCase("MD5", req.getSign_type())) {
             return "签名方式只支持RSA、DSA、MD5";
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";
@@ -73,8 +74,8 @@ public class CreateDirectPayApi {
         } else if (Lang.isEmpty(req.getTotal_fee())) {
             return "交易金额不能为空";
         } else if (!Strings.isEmpty(req.getSeller_id())
-                || !Strings.isEmpty(req.getSeller_email())
-                || !Strings.isEmpty(req.getSeller_account_name())) {
+                && !Strings.isEmpty(req.getSeller_email())
+                && !Strings.isEmpty(req.getSeller_account_name())) {
             return "seller_id、seller_account_name、seller_email三个参数至少必须传递一个";
         } else {
             return "";

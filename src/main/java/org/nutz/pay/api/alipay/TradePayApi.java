@@ -7,7 +7,6 @@ import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.pay.bean.alipay.req.unity.Base;
 import org.nutz.pay.bean.alipay.req.unity.TradePay;
-import org.nutz.pay.bean.alipay.req.unity.TradePrecreate;
 import org.nutz.pay.bean.alipay.resp.unity.TradePayResp;
 import org.nutz.pay.util.Util;
 import org.nutz.pay.util.alipay.pc.Signature;
@@ -16,6 +15,7 @@ import java.util.Map;
 
 /**
  * <a href="https://doc.open.alipay.com/doc2/apiDetail.htm?spm=a219a.7629065.0.0.PlTwKb&apiId=850&docType=4">统一收单交易支付接口(付款码/声波支付)</a>
+ * alipay.trade.pay
  * Created by howe on 2017/4/22.
  */
 public class TradePayApi {
@@ -57,12 +57,12 @@ public class TradePayApi {
             return "应用ID不能为空";
         } else if (Strings.isEmpty(req.getMethod())) {
             return "接口名称不能为空";
-        } else if (!Strings.equals(req.getMethod(), "alipay.trade.unity.pay")) {
-            return "接口名称错误, 应该为alipay.trade.unity.pay";
+        } else if (!Strings.equals(req.getMethod(), "alipay.trade.pay")) {
+            return "接口名称错误, 应该为alipay.trade.pay";
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA2", req.getSign_type())
-                || !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
+                && !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
             return "签名方式只支持RSA、RSA2";
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";

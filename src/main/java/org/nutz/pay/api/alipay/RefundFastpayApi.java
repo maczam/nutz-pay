@@ -13,6 +13,7 @@ import org.nutz.pay.util.alipay.pc.Signature;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.JyEgac&treeId=62&articleId=104744&docType=1">即时到账有密退款接口</a>
+ * refund_fastpay_by_platform_pwd
  * Created by Howe on 2017/4/18.
  *
  * @author Howe(howechiang@gmail.com)
@@ -53,15 +54,15 @@ public class RefundFastpayApi {
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA", req.getSign_type())
-                || !Strings.equalsIgnoreCase("DSA", req.getSign_type())
-                || !Strings.equalsIgnoreCase("MD5", req.getSign_type())) {
+                && !Strings.equalsIgnoreCase("DSA", req.getSign_type())
+                && !Strings.equalsIgnoreCase("MD5", req.getSign_type())) {
             return "签名方式只支持RSA、DSA、MD5";
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";
         } else if (Strings.isEmpty(req.getNotify_url())) {
             return "服务器异步通知页面路径不能为空";
         } else if (!Strings.isEmpty(req.getSeller_user_id())
-                || !Strings.isEmpty(req.getSeller_email())) {
+                && !Strings.isEmpty(req.getSeller_email())) {
             return "seller_email、seller_user_id两者必填一个";
         } else if (Strings.isEmpty(req.getRefund_date())) {
             return "退款请求时间不能为空";

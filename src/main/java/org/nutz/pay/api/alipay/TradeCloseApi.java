@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/api.htm?spm=a219a.7395905.0.0.UGwRdC&docType=4&apiId=1058">统一收单交易关闭接口</a>
+ * alipay.trade.close
  * Created by Jianghao on 2017/4/22
  *
  * @howechiang
@@ -58,12 +59,12 @@ public class TradeCloseApi {
             return "应用ID不能为空";
         } else if (Strings.isEmpty(req.getMethod())) {
             return "接口名称不能为空";
-        } else if (!Strings.equals(req.getMethod(), "alipay.trade.unity.pay")) {
-            return "接口名称错误, 应该为alipay.trade.unity.pay";
+        } else if (!Strings.equals(req.getMethod(), "alipay.trade.close")) {
+            return "接口名称错误, 应该为alipay.trade.close";
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA2", req.getSign_type())
-                || !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
+                && !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
             return "签名方式只支持RSA、RSA2";
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";

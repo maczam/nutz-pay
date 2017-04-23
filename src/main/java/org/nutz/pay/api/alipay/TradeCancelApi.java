@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/api.htm?spm=a219a.7395905.0.0.3FA9Bw&docType=4&apiId=866">统一收单交易撤销接口</a>
+ * alipay.trade.cancel
  * Created by Jianghao on 2017/4/21
  *
  * @howechiang
@@ -58,12 +59,12 @@ public class TradeCancelApi {
             return "应用ID不能为空";
         } else if (Strings.isEmpty(req.getMethod())) {
             return "接口名称不能为空";
-        } else if (!Strings.equals(req.getMethod(), "alipay.trade.unity.pay")) {
-            return "接口名称错误, 应该为alipay.trade.unity.pay";
+        } else if (!Strings.equals(req.getMethod(), "alipay.trade.cancel")) {
+            return "接口名称错误, 应该为alipay.trade.cancel";
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA2", req.getSign_type())
-                || !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
+                && !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
             return "签名方式只支持RSA、RSA2";
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";

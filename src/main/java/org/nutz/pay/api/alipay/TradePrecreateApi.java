@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * <a href="https://doc.open.alipay.com/doc2/apiDetail.htm?spm=a219a.7629065.0.0.PlTwKb&apiId=862&docType=4">统一收单线下交易预创建（扫码支付）</a>
+ * alipay.trade.precreate
  * Created by Jianghao on 2017/4/20
  *
  * @howechiang
@@ -58,12 +59,12 @@ public class TradePrecreateApi {
             return "应用ID不能为空";
         } else if (Strings.isEmpty(req.getMethod())) {
             return "接口名称不能为空";
-        } else if (!Strings.equals(req.getMethod(), "alipay.trade.unity.pay")) {
-            return "接口名称错误, 应该为alipay.trade.unity.pay";
+        } else if (!Strings.equals(req.getMethod(), "alipay.trade.precreate")) {
+            return "接口名称错误, 应该为alipay.trade.precreate";
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA2", req.getSign_type())
-                || !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
+                && !Strings.equalsIgnoreCase("RSA", req.getSign_type())) {
             return "签名方式只支持RSA、RSA2";
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";

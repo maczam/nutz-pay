@@ -9,6 +9,7 @@ import org.nutz.pay.util.Util;
 
 /**
  * <a href="https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.wbCSOb&treeId=62&articleId=104747&docType=1">通知验证接口</a>
+ * notify_verify
  * Created by howe on 2017/4/18.
  *
  * @author Howe(howechiang@gmail.com)
