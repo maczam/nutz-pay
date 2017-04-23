@@ -25,7 +25,6 @@ public class Base {
 
     /**
      * 接口名称
-     * alipay.trade.unity.pay
      * 必填
      */
     private String method;
