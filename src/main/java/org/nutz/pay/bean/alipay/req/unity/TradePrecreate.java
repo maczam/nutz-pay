@@ -1,4 +1,9 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity;
+
+import com.alipay.api.domain.ExtendParams;
+import org.nutz.pay.bean.alipay.req.unity.extend.GoodsDetail;
+import org.nutz.pay.bean.alipay.req.unity.extend.RoyaltyInfo;
+import org.nutz.pay.bean.alipay.req.unity.extend.SubMerchan;
 
 import java.util.List;
 
@@ -122,13 +127,13 @@ public class TradePrecreate {
      * 其它说明详见：“商品明细说明”
      * 选填
      */
-    private List<TradePrecreateGoodsDetail> goods_detail;
+    private List<GoodsDetail> goods_detail;
 
-    public List<TradePrecreateGoodsDetail> getGoods_detail() {
+    public List<GoodsDetail> getGoods_detail() {
         return goods_detail;
     }
 
-    public void setGoods_detail(List<TradePrecreateGoodsDetail> goods_detail) {
+    public void setGoods_detail(List<GoodsDetail> goods_detail) {
         this.goods_detail = goods_detail;
     }
 
@@ -178,13 +183,13 @@ public class TradePrecreate {
      * 业务扩展参数
      * 选填
      */
-    private TradePrecreateExpand extend_params;
+    private ExtendParams extend_params;
 
-    public TradePrecreateExpand getExtend_params() {
+    public ExtendParams getExtend_params() {
         return extend_params;
     }
 
-    public void setExtend_params(TradePrecreateExpand extend_params) {
+    public void setExtend_params(ExtendParams extend_params) {
         this.extend_params = extend_params;
     }
 
@@ -208,13 +213,13 @@ public class TradePrecreate {
      * 描述分账信息，json格式。
      * 选填
      */
-    private TradePrecreateRoyaltyInfo royalty_info;
+    private RoyaltyInfo royalty_info;
 
-    public TradePrecreateRoyaltyInfo getRoyalty_info() {
+    public RoyaltyInfo getRoyalty_info() {
         return royalty_info;
     }
 
-    public void setRoyalty_info(TradePrecreateRoyaltyInfo royalty_info) {
+    public void setRoyalty_info(RoyaltyInfo royalty_info) {
         this.royalty_info = royalty_info;
     }
 
@@ -222,13 +227,13 @@ public class TradePrecreate {
      * 二级商户信息,当前只对特殊银行机构特定场景下使用此字段
      * 选填
      */
-    private TradePrecreateSubMerchan sub_merchant;
+    private SubMerchan sub_merchant;
 
-    public TradePrecreateSubMerchan getSub_merchant() {
+    public SubMerchan getSub_merchant() {
         return sub_merchant;
     }
 
-    public void setSub_merchant(TradePrecreateSubMerchan sub_merchant) {
+    public void setSub_merchant(SubMerchan sub_merchant) {
         this.sub_merchant = sub_merchant;
     }
 

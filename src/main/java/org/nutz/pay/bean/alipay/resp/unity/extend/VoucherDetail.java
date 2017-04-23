@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.resp.wap;
+package org.nutz.pay.bean.alipay.resp.unity.extend;
 
 /**
  * 本交易支付时使用的所有优惠券信息
@@ -6,13 +6,13 @@ package org.nutz.pay.bean.alipay.resp.wap;
  *
  * @howechiang
  */
-public class TradeQueryVoucherDetail {
+public class VoucherDetail {
 
     /**
      * 券id
      * 必填
      */
-    private String  id;
+    private String id;
 
     /**
      * 券名称

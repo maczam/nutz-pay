@@ -1,16 +1,16 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity;
 
 /**
- * 统一收单线下交易查询接口
- * Created by Jianghao on 2017/4/22
+ * 统一收单交易撤销接口请求参数
+ * Created by Jianghao on 2017/4/21
  *
  * @howechiang
  */
-public class TradeQuery {
+public class TradeCancel {
 
     /**
-     * 订单支付时传入的商户订单号
-     * 不能和 trade_no同时为空。
+     * 原支付请求的商户订单号
+     * 和支付宝交易号不能同时为空
      */
     private String out_trade_no;
 
@@ -35,5 +35,4 @@ public class TradeQuery {
     public void setTrade_no(String trade_no) {
         this.trade_no = trade_no;
     }
-
 }

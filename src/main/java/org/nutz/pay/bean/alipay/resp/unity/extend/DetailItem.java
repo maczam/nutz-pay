@@ -1,11 +1,11 @@
-package org.nutz.pay.bean.alipay.resp.wap;
+package org.nutz.pay.bean.alipay.resp.unity.extend;
 
 /**
  * Created by Jianghao on 2017/4/22
  *
  * @howechiang
  */
-public class TradeRefundDetailItem {
+public class DetailItem {
 
     /**
      * 交易使用的资金渠道

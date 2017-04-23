@@ -1,6 +1,6 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity;
 
-import java.util.Map;
+import org.nutz.pay.bean.alipay.req.unity.extend.TradeWapPayExtendParams;
 
 /**
  * Created by Howe on 2017/4/19.
@@ -178,13 +178,13 @@ public class TradeWapPay {
      * 格式:{"sys_service_provider_id":"2088511833207846"}
      * 选填
      */
-    private TradeWapPayExpand extend_params;
+    private TradeWapPayExtendParams extend_params;
 
     public void setProduct_code(String product_code) {
         this.product_code = product_code;
     }
 
-    public TradeWapPayExpand getExtend_params() {
+    public TradeWapPayExtendParams getExtend_params() {
         return extend_params;
     }
 

@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.resp.wap;
+package org.nutz.pay.bean.alipay.resp.unity;
 
 /**
  * Created by Jianghao on 2017/4/22

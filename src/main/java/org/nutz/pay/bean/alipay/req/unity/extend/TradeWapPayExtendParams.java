@@ -1,11 +1,11 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity.extend;
 
 /**
  * Created by Howe on 2017/4/19.
  *
  * @author Howe(howechiang@gmail.com)
  */
-public class TradeWapPayExpand {
+public class TradeWapPayExtendParams {
 
     /**
      * 系统商编号，该参数作为系统商返佣数据提取的依据，请填写系统商签约协议的PID

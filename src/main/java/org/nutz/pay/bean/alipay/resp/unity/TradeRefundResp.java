@@ -1,4 +1,6 @@
-package org.nutz.pay.bean.alipay.resp.wap;
+package org.nutz.pay.bean.alipay.resp.unity;
+
+import org.nutz.pay.bean.alipay.resp.unity.extend.DetailItem;
 
 import java.util.Date;
 import java.util.List;
@@ -115,13 +117,13 @@ public class TradeRefundResp extends Base {
      * 退款使用的资金渠道
      * 选填
      */
-    private List<TradeRefundDetailItem> refund_detail_item_list;
+    private List<DetailItem> refund_detail_item_list;
 
-    public List<TradeRefundDetailItem> getRefund_detail_item_list() {
+    public List<DetailItem> getRefund_detail_item_list() {
         return refund_detail_item_list;
     }
 
-    public void setRefund_detail_item_list(List<TradeRefundDetailItem> refund_detail_item_list) {
+    public void setRefund_detail_item_list(List<DetailItem> refund_detail_item_list) {
         this.refund_detail_item_list = refund_detail_item_list;
     }
 

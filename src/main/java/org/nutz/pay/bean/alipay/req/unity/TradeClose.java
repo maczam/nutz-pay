@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity;
 
 /**
  * 统一收单交易关闭接口请求参数

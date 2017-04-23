@@ -6,38 +6,37 @@ import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.pay.bean.alipay.req.unity.Base;
+import org.nutz.pay.bean.alipay.req.unity.TradePay;
 import org.nutz.pay.bean.alipay.req.unity.TradePrecreate;
-import org.nutz.pay.bean.alipay.resp.unity.TradePrecreateResp;
+import org.nutz.pay.bean.alipay.resp.unity.TradePayResp;
 import org.nutz.pay.util.Util;
 import org.nutz.pay.util.alipay.pc.Signature;
 
 import java.util.Map;
 
 /**
- * <a href="https://doc.open.alipay.com/doc2/apiDetail.htm?spm=a219a.7629065.0.0.PlTwKb&apiId=862&docType=4">统一收单线下交易预创建（扫码支付）</a>
- * Created by Jianghao on 2017/4/20
- *
- * @howechiang
+ * <a href="https://doc.open.alipay.com/doc2/apiDetail.htm?spm=a219a.7629065.0.0.PlTwKb&apiId=850&docType=4">统一收单交易支付接口(付款码/声波支付)</a>
+ * Created by howe on 2017/4/22.
  */
-public class TradePrecreateApi {
+public class TradePayApi {
 
     private static final Log log = Logs.get();
 
     /**
-     * 统一收单线下交易预创建（扫码支付）
+     * 统一收单交易支付接口(付款码/声波支付)
      *
      * @param req 参数
      * @return 相应结果
      */
-    public static TradePrecreateResp tradePrecreate(Base req) {
+    public static TradePayResp tradePay(Base req) {
 
         try {
             String result = checkParams(req);
             if (Strings.isEmpty(result)) {
                 String r = "https://openapi.alipay.com/gateway.do?" + Util.buildParmas(Lang.obj2nutmap(req));
-                return Json.fromJson(TradePrecreateResp.class, r);
+                return Json.fromJson(TradePayResp.class, r);
             } else {
-                log.error("支付宝统一收单线下交易预创建（扫码支付）接口参数校验异常: " + result);
+                log.error("支付宝统一收单交易支付接口(付款码/声波支付)参数校验异常: " + result);
                 return null;
             }
         } catch (Exception e) {
@@ -74,13 +73,21 @@ public class TradePrecreateApi {
         } else if (Lang.isEmpty(req.getBiz_content())) {
             return "业务请求参数的集合不能为空";
         } else {
-            TradePrecreate tp = Lang.map2Object(req.getBiz_content(), TradePrecreate.class);
+            TradePay tp = Lang.map2Object(req.getBiz_content(), TradePay.class);
             if (Strings.isEmpty(tp.getOut_trade_no())) {
                 return "商户订单号不能为空";
-            } else if (Lang.isEmpty(tp.getTotal_amount())) {
-                return "订单总金额不能为空";
+            } else if (Strings.isEmpty(tp.getScene())) {
+                return "支付场景不能为空";
+            } else if (!Strings.equalsIgnoreCase(tp.getScene(), "bar_code")
+                    && !Strings.equalsIgnoreCase(tp.getScene(), "wave_code")) {
+                return "支付场景只支持条码支付(bar_code)与声波支付(wave_code)";
+            } else if (Strings.isEmpty(tp.getAuth_code())) {
+                return "支付授权码不能为空";
             } else if (Strings.isEmpty(tp.getSubject())) {
                 return "订单标题不能为空";
+            } else if (Lang.isEmpty(tp.getTotal_amount())
+                    || (Lang.isEmpty(tp.getTotal_amount()) && Lang.isEmpty(tp.getTotal_amount()))) {
+                return "订单总金额与(可打折金额和不可打折金额)不能同时为空";
             } else {
                 return "";
             }
@@ -103,7 +110,7 @@ public class TradePrecreateApi {
                     || Strings.equalsIgnoreCase(req.getSign_type(), "RSA")) {
                 return Signature.sign(s, k, req.getSign_type(), "UTF-8");
             } else {
-                log.error("支付宝统一收单线下交易预创建（扫码支付）接口签名方式只支持RSA、RSA2.");
+                log.error("支付宝统一收单交易支付接口(付款码/声波支付)签名方式只支持RSA、RSA2.");
                 return null;
             }
         } else {

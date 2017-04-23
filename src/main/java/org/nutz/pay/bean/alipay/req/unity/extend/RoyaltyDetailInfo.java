@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity.extend;
 
 /**
  * 分账明细的信息，可以描述多条分账指令，json数组。
@@ -6,7 +6,7 @@ package org.nutz.pay.bean.alipay.req.wap;
  *
  * @howechiang
  */
-public class TradePrecreateRoyaltyDetailInfo {
+public class RoyaltyDetailInfo {
 
     /**
      * 分账序列号，表示分账执行的顺序，必须为正整数

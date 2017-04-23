@@ -1,11 +1,11 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity.extend;
 
 /**
- * Created by Jianghao on 2017/4/21
+ * Created by howe on 2017/4/22
  *
  * @howechiang
  */
-public class TradePrecreateGoodsDetail {
+public class GoodsDetail {
 
     /**
      * 商品的编号

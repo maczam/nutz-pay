@@ -6,38 +6,37 @@ import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.pay.bean.alipay.req.unity.Base;
-import org.nutz.pay.bean.alipay.req.unity.TradePrecreate;
-import org.nutz.pay.bean.alipay.resp.unity.TradePrecreateResp;
+import org.nutz.pay.bean.alipay.req.unity.TradeFastpayRefundQuery;
+import org.nutz.pay.bean.alipay.resp.unity.TradeFastpayRefundQueryResp;
 import org.nutz.pay.util.Util;
 import org.nutz.pay.util.alipay.pc.Signature;
 
 import java.util.Map;
 
 /**
- * <a href="https://doc.open.alipay.com/doc2/apiDetail.htm?spm=a219a.7629065.0.0.PlTwKb&apiId=862&docType=4">统一收单线下交易预创建（扫码支付）</a>
- * Created by Jianghao on 2017/4/20
- *
- * @howechiang
+ * <a href="https://doc.open.alipay.com/docs/api.htm?spm=a219a.7395905.0.0.s75Uke&docType=4&apiId=1049">统一收单交易退款查询</a>
+ * Created by howe on 2017/4/22.
  */
-public class TradePrecreateApi {
+public class TradeFastpayRefundQueryApi {
+
 
     private static final Log log = Logs.get();
 
     /**
-     * 统一收单线下交易预创建（扫码支付）
+     * 请求统一收单交易退款查询接口
      *
      * @param req 参数
      * @return 相应结果
      */
-    public static TradePrecreateResp tradePrecreate(Base req) {
+    public static TradeFastpayRefundQueryResp tradeFastpayRefundQuery(Base req) {
 
         try {
             String result = checkParams(req);
             if (Strings.isEmpty(result)) {
                 String r = "https://openapi.alipay.com/gateway.do?" + Util.buildParmas(Lang.obj2nutmap(req));
-                return Json.fromJson(TradePrecreateResp.class, r);
+                return Json.fromJson(TradeFastpayRefundQueryResp.class, r);
             } else {
-                log.error("支付宝统一收单线下交易预创建（扫码支付）接口参数校验异常: " + result);
+                log.error("支付宝统一收单交易退款查询接口参数校验异常: " + result);
                 return null;
             }
         } catch (Exception e) {
@@ -74,13 +73,11 @@ public class TradePrecreateApi {
         } else if (Lang.isEmpty(req.getBiz_content())) {
             return "业务请求参数的集合不能为空";
         } else {
-            TradePrecreate tp = Lang.map2Object(req.getBiz_content(), TradePrecreate.class);
-            if (Strings.isEmpty(tp.getOut_trade_no())) {
-                return "商户订单号不能为空";
-            } else if (Lang.isEmpty(tp.getTotal_amount())) {
-                return "订单总金额不能为空";
-            } else if (Strings.isEmpty(tp.getSubject())) {
-                return "订单标题不能为空";
+            TradeFastpayRefundQuery tfrq = Lang.map2Object(req.getBiz_content(), TradeFastpayRefundQuery.class);
+            if (Strings.isEmpty(tfrq.getOut_trade_no()) && Strings.isEmpty(tfrq.getTrade_no())) {
+                return "商户订单号和支付宝交易号不能同时为空";
+            } else if (Strings.isEmpty(tfrq.getOut_request_no())) {
+                return "退款请求号不能为空";
             } else {
                 return "";
             }
@@ -103,7 +100,7 @@ public class TradePrecreateApi {
                     || Strings.equalsIgnoreCase(req.getSign_type(), "RSA")) {
                 return Signature.sign(s, k, req.getSign_type(), "UTF-8");
             } else {
-                log.error("支付宝统一收单线下交易预创建（扫码支付）接口签名方式只支持RSA、RSA2.");
+                log.error("支付宝统一收单交易退款查询接口签名方式只支持RSA、RSA2.");
                 return null;
             }
         } else {

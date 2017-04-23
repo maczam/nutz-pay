@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.resp.wap;
+package org.nutz.pay.bean.alipay.resp.unity;
 
 /**
  * 统一收单交易撤销接口响应参数

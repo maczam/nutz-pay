@@ -1,11 +1,11 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity.extend;
 
 /**
- * Created by Jianghao on 2017/4/21
+ * Created by Jianghao on 2017/4/22
  *
  * @howechiang
  */
-public class TradePrecreateExpand {
+public class ExpandParams {
 
     /**
      * 系统商编号

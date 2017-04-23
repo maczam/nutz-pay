@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity;
 
 import java.util.Map;
 
@@ -25,7 +25,7 @@ public class Base {
 
     /**
      * 接口名称
-     * alipay.trade.wap.pay
+     * alipay.trade.unity.pay
      * 必填
      */
     private String method;

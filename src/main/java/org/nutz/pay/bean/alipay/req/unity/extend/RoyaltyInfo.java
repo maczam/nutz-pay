@@ -1,14 +1,14 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity.extend;
 
 import java.util.List;
 
 /**
- * 描述分账信息，json格式。
+ * 描述分账信息，Json格式，其它说明详见分账说明
  * Created by Jianghao on 2017/4/21
  *
  * @howechiang
  */
-public class TradePrecreateRoyaltyInfo {
+public class RoyaltyInfo {
 
     /**
      * 分账类型
@@ -29,13 +29,13 @@ public class TradePrecreateRoyaltyInfo {
      * 分账明细的信息，可以描述多条分账指令，json数组。
      * 必填
      */
-    private List<TradePrecreateRoyaltyDetailInfo> royalty_detail_infos;
+    private List<RoyaltyDetailInfo> royalty_detail_infos;
 
-    public List<TradePrecreateRoyaltyDetailInfo> getRoyalty_detail_infos() {
+    public List<RoyaltyDetailInfo> getRoyalty_detail_infos() {
         return royalty_detail_infos;
     }
 
-    public void setRoyalty_detail_infos(List<TradePrecreateRoyaltyDetailInfo> royalty_detail_infos) {
+    public void setRoyalty_detail_infos(List<RoyaltyDetailInfo> royalty_detail_infos) {
         this.royalty_detail_infos = royalty_detail_infos;
     }
 }

@@ -4,8 +4,8 @@ import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
-import org.nutz.pay.bean.alipay.req.wap.Base;
-import org.nutz.pay.bean.alipay.req.wap.TradeWapPay;
+import org.nutz.pay.bean.alipay.req.unity.Base;
+import org.nutz.pay.bean.alipay.req.unity.TradeWapPay;
 import org.nutz.pay.util.Util;
 import org.nutz.pay.util.alipay.pc.Signature;
 
@@ -56,8 +56,8 @@ public class TradeWapPayApi {
             return "应用ID不能为空";
         } else if (Strings.isEmpty(req.getMethod())) {
             return "接口名称不能为空";
-        } else if (!Strings.equals(req.getMethod(), "alipay.trade.wap.pay")) {
-            return "接口名称错误, 应该为alipay.trade.wap.pay";
+        } else if (!Strings.equals(req.getMethod(), "alipay.trade.unity.pay")) {
+            return "接口名称错误, 应该为alipay.trade.unity.pay";
         } else if (Strings.isEmpty(req.getSign_type())) {
             return "签名方式不能为空";
         } else if (!Strings.equalsIgnoreCase("RSA2", req.getSign_type())

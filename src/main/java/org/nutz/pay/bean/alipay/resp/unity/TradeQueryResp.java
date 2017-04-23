@@ -1,4 +1,7 @@
-package org.nutz.pay.bean.alipay.resp.wap;
+package org.nutz.pay.bean.alipay.resp.unity;
+
+import org.nutz.pay.bean.alipay.resp.unity.extend.TradeFundBil;
+import org.nutz.pay.bean.alipay.resp.unity.extend.VoucherDetail;
 
 import java.util.Date;
 import java.util.List;
@@ -212,13 +215,13 @@ public class TradeQueryResp extends Base {
      * 交易支付使用的资金渠道
      * 选填
      */
-    private List<TradeQueryFundBill> fund_bill_list;
+    private List<TradeFundBil> fund_bill_list;
 
-    public List<TradeQueryFundBill> getFund_bill_list() {
+    public List<TradeFundBil> getFund_bill_list() {
         return fund_bill_list;
     }
 
-    public void setFund_bill_list(List<TradeQueryFundBill> fund_bill_list) {
+    public void setFund_bill_list(List<TradeFundBil> fund_bill_list) {
         this.fund_bill_list = fund_bill_list;
     }
 
@@ -282,13 +285,13 @@ public class TradeQueryResp extends Base {
      * 本交易支付时使用的所有优惠券信息
      * 选填
      */
-    private List<TradeQueryVoucherDetail> voucher_detail_list;
+    private List<VoucherDetail> voucher_detail_list;
 
-    public List<TradeQueryVoucherDetail> getVoucher_detail_list() {
+    public List<VoucherDetail> getVoucher_detail_list() {
         return voucher_detail_list;
     }
 
-    public void setVoucher_detail_list(List<TradeQueryVoucherDetail> voucher_detail_list) {
+    public void setVoucher_detail_list(List<VoucherDetail> voucher_detail_list) {
         this.voucher_detail_list = voucher_detail_list;
     }
 }

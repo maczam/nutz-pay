@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.resp.wap;
+package org.nutz.pay.bean.alipay.resp.unity.extend;
 
 /**
  * 交易支付使用的资金渠道
@@ -6,7 +6,7 @@ package org.nutz.pay.bean.alipay.resp.wap;
  *
  * @howechiang
  */
-public class TradeQueryFundBill {
+public class TradeFundBil {
 
     /**
      * 交易使用的资金渠道

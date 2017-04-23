@@ -1,4 +1,4 @@
-package org.nutz.pay.bean.alipay.req.wap;
+package org.nutz.pay.bean.alipay.req.unity.extend;
 
 /**
  * 二级商户信息,当前只对特殊银行机构特定场景下使用此字段
@@ -6,7 +6,7 @@ package org.nutz.pay.bean.alipay.req.wap;
  *
  * @howechiang
  */
-public class TradePrecreateSubMerchan {
+public class SubMerchan {
 
     /**
      * 二级商户的支付宝id
