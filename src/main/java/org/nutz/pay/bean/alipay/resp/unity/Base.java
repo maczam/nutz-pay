@@ -63,16 +63,24 @@ public class Base {
         this.code = code;
     }
 
-    private String String;
+    /**
+     * 网关返回码描述,详见文档
+     * 必填
+     */
+    private String msg;
 
-    public java.lang.String getString() {
-        return String;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setString(java.lang.String string) {
-        String = string;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
+    /**
+     * 业务返回码,详见文档
+     * 选填
+     */
     private String sub_code;
 
     public java.lang.String getSub_code() {
@@ -83,6 +91,10 @@ public class Base {
         this.sub_code = sub_code;
     }
 
+    /**
+     * 业务返回码描述,详见文档
+     * 选填
+     */
     private String sub_msg;
 
     public java.lang.String getSub_msg() {
@@ -93,6 +105,10 @@ public class Base {
         this.sub_msg = sub_msg;
     }
 
+    /**
+     * 签名,<a href="https://doc.open.alipay.com/docs/doc.htm?treeId=291&articleId=106074&docType=1">详见文档</a>
+     * 必填
+     */
     private String sign;
 
     public java.lang.String getSign() {
