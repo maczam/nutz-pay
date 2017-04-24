@@ -6,8 +6,7 @@ package org.nutz.pay.bean.qpay.req;
  *
  * @author Howe(howechiang@gmail.com)
  */
-public class UnifiedOrderReq {
-
+public class UnifiedOrderReq extends Base {
 
 
     /**

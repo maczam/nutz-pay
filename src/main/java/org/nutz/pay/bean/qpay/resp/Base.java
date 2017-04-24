@@ -174,6 +174,11 @@ public class Base {
         this.err_code_desc = err_code_desc;
     }
 
+    /**
+     * 随机字符串
+     * 随机字符串，不长于32位
+     * 必填
+     */
     private String nonce_str;
 
     public String getNonce_str() {
