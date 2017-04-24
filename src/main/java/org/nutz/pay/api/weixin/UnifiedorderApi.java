@@ -60,8 +60,8 @@ public class UnifiedorderApi {
         } else if (Strings.isEmpty(req.getSign())) {
             return "签名不能为空";
         } else if (!Strings.isEmpty(req.getSign_type())
-                || !Strings.equalsIgnoreCase("MD5", req.getSign_type())
-                || !Strings.equalsIgnoreCase("HMAC-SHA256", req.getSign_type())) {
+                && !Strings.equalsIgnoreCase("MD5", req.getSign_type())
+                && !Strings.equalsIgnoreCase("HMAC-SHA256", req.getSign_type())) {
             return "签名类型只支持HMAC-SHA256和MD5";
         } else if (Strings.isEmpty(req.getBody())) {
             return "商品描述不能为空";
@@ -83,8 +83,8 @@ public class UnifiedorderApi {
         } else if (Strings.isEmpty(req.getTrade_type())) {
             return "交易类型不能为空";
         } else if (!Strings.equalsIgnoreCase("APP", req.getTrade_type())
-                || !Strings.equalsIgnoreCase("JSAPI", req.getTrade_type())
-                || !Strings.equalsIgnoreCase("NATIVE", req.getTrade_type())) {
+                && !Strings.equalsIgnoreCase("JSAPI", req.getTrade_type())
+                && !Strings.equalsIgnoreCase("NATIVE", req.getTrade_type())) {
             return "交易类型只支持JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付";
         } else if (Strings.equalsIgnoreCase("NATIVE", req.getTrade_type())
                 && Strings.isEmpty(req.getProduct_id())) {

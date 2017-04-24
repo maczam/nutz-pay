@@ -8,65 +8,7 @@ package org.nutz.pay.bean.qpay.req;
  */
 public class UnifiedOrderReq {
 
-    /**
-     * 应用ID
-     * 腾讯开放平台审核通过的应用APPID或腾讯公众平台审核通过的公众号APPID
-     * 选填
-     */
-    private String appid;
 
-    public String getAppid() {
-        return appid;
-    }
-
-    public void setAppid(String appid) {
-        this.appid = appid;
-    }
-
-    /**
-     * 商户号
-     * QQ钱包分配的商户号
-     * 必填
-     */
-    private String mch_id;
-
-    public String getMch_id() {
-        return mch_id;
-    }
-
-    public void setMch_id(String mch_id) {
-        this.mch_id = mch_id;
-    }
-
-    /**
-     * 随机字符串
-     * 随机字符串，不长于32位，详见<a href="https://qpay.qq.com/qpaywiki/showdocument.php?pid=38&docid=57">随机数算法</a>
-     * 必填
-     */
-    private String nonce_str;
-
-    public String getNonce_str() {
-        return nonce_str;
-    }
-
-    public void setNonce_str(String nonce_str) {
-        this.nonce_str = nonce_str;
-    }
-
-    /**
-     * 签名
-     * 商户签名，详见<a href="https://qpay.qq.com/qpaywiki/showdocument.php?pid=38&docid=57">商户签名算法规则</a>
-     * 必填
-     */
-    private String sign;
-
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
 
     /**
      * 商品描述
@@ -281,51 +223,4 @@ public class UnifiedOrderReq {
         this.device_info = device_info;
     }
 
-    public UnifiedOrderReq(String appid, String mch_id, String nonce_str, String sign, String body, String attach, String out_trade_no, String fee_type, Integer total_fee, String spbill_create_ip, String time_start, String time_expire, String limit_pay, String contract_code, String promotion_tag, String trade_type, String notify_url, String device_info) {
-        this.appid = appid;
-        this.mch_id = mch_id;
-        this.nonce_str = nonce_str;
-        this.sign = sign;
-        this.body = body;
-        this.attach = attach;
-        this.out_trade_no = out_trade_no;
-        this.fee_type = fee_type;
-        this.total_fee = total_fee;
-        this.spbill_create_ip = spbill_create_ip;
-        this.time_start = time_start;
-        this.time_expire = time_expire;
-        this.limit_pay = limit_pay;
-        this.contract_code = contract_code;
-        this.promotion_tag = promotion_tag;
-        this.trade_type = trade_type;
-        this.notify_url = notify_url;
-        this.device_info = device_info;
-    }
-
-    public UnifiedOrderReq() {
-    }
-
-    @Override
-    public String toString() {
-        return "UnifiedOrderReq{" +
-                "appid='" + appid + '\'' +
-                ", mch_id='" + mch_id + '\'' +
-                ", nonce_str='" + nonce_str + '\'' +
-                ", sign='" + sign + '\'' +
-                ", body='" + body + '\'' +
-                ", attach='" + attach + '\'' +
-                ", out_trade_no='" + out_trade_no + '\'' +
-                ", fee_type='" + fee_type + '\'' +
-                ", total_fee=" + total_fee +
-                ", spbill_create_ip='" + spbill_create_ip + '\'' +
-                ", time_start='" + time_start + '\'' +
-                ", time_expire='" + time_expire + '\'' +
-                ", limit_pay='" + limit_pay + '\'' +
-                ", contract_code='" + contract_code + '\'' +
-                ", promotion_tag='" + promotion_tag + '\'' +
-                ", trade_type='" + trade_type + '\'' +
-                ", notify_url='" + notify_url + '\'' +
-                ", device_info='" + device_info + '\'' +
-                '}';
-    }
 }

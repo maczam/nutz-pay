@@ -6,37 +6,7 @@ package org.nutz.pay.bean.weixin.req;
  *
  * @author Howe(howechiang@gmail.com)
  */
-public class UnifiedorderReq {
-
-    /**
-     * 公众账号ID
-     * 微信支付分配的公众账号ID（企业号corpid即为此appId）
-     * 必填
-     */
-    private String appid;
-
-    public String getAppid() {
-        return appid;
-    }
-
-    public void setAppid(String appid) {
-        this.appid = appid;
-    }
-
-    /**
-     * 商户号
-     * 微信支付分配的商户号
-     * 必填
-     */
-    private String mch_id;
-
-    public String getMch_id() {
-        return mch_id;
-    }
-
-    public void setMch_id(String mch_id) {
-        this.mch_id = mch_id;
-    }
+public class UnifiedorderReq extends Base {
 
     /**
      * 设备号
@@ -51,51 +21,6 @@ public class UnifiedorderReq {
 
     public void setDevice_info(String device_info) {
         this.device_info = device_info;
-    }
-
-    /**
-     * 随机字符串
-     * 随机字符串，长度要求在32位以内。推荐<a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_3">随机数生成算法</a>
-     * 必填
-     */
-    private String nonce_str;
-
-    public String getNonce_str() {
-        return nonce_str;
-    }
-
-    public void setNonce_str(String nonce_str) {
-        this.nonce_str = nonce_str;
-    }
-
-    /**
-     * 签名
-     * 通过签名算法计算得出的签名值，详见<a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_3">签名生成算法</a>
-     * 必填
-     */
-    private String sign;
-
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
-    /**
-     * 签名类型
-     * 签名类型，默认为MD5，支持HMAC-SHA256和MD5。
-     * 选填
-     */
-    private String sign_type;
-
-    public String getSign_type() {
-        return sign_type;
-    }
-
-    public void setSign_type(String sign_type) {
-        this.sign_type = sign_type;
     }
 
     /**
@@ -311,9 +236,10 @@ public class UnifiedorderReq {
 
     /**
      * 用户标识
-     * trade_type=JSAPI时（即公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识。openid如何获取，可参考【<a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_4">获取openid</a>
-     * 】。企业号请使用【<a href="http://qydev.weixin.qq.com/wiki/index.php?title=OAuth%E9%AA%8C%E8%AF%81%E6%8E%A5%E5%8F%A3">企业号OAuth2.0
-     * 接口</a>】获取企业号内成员userid，再调用【<a href="http://qydev.weixin.qq.com/wiki/index.php?title=Userid%E4%B8%8Eopenid%E4%BA%92%E6%8D%A2%E6%8E%A5%E5%8F%A3">企业号userid转openid接口</a>】进行转换
+     * trade_type=JSAPI时（即公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识。
+     * openid如何获取，可参考【<a href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_4">获取openid</a>】。
+     * 企业号请使用【<a href="http://qydev.weixin.qq.com/wiki/index.php?title=OAuth%E9%AA%8C%E8%AF%81%E6%8E%A5%E5%8F%A3">企业号OAuth2.0接口</a>】获取企业号内成员userid，
+     * 再调用【<a href="http://qydev.weixin.qq.com/wiki/index.php?title=Userid%E4%B8%8Eopenid%E4%BA%92%E6%8D%A2%E6%8E%A5%E5%8F%A3">企业号userid转openid接口</a>】进行转换
      * 选填
      */
     private String openid;
@@ -326,57 +252,4 @@ public class UnifiedorderReq {
         this.openid = openid;
     }
 
-    public UnifiedorderReq(String appid, String mch_id, String device_info, String nonce_str, String sign, String sign_type, String body, String detail, String attach, String out_trade_no, String fee_type, Integer total_fee, String spbill_create_ip, String time_start, String time_expire, String goods_tag, String notify_url, String trade_type, String product_id, String limit_pay, String openid) {
-        this.appid = appid;
-        this.mch_id = mch_id;
-        this.device_info = device_info;
-        this.nonce_str = nonce_str;
-        this.sign = sign;
-        this.sign_type = sign_type;
-        this.body = body;
-        this.detail = detail;
-        this.attach = attach;
-        this.out_trade_no = out_trade_no;
-        this.fee_type = fee_type;
-        this.total_fee = total_fee;
-        this.spbill_create_ip = spbill_create_ip;
-        this.time_start = time_start;
-        this.time_expire = time_expire;
-        this.goods_tag = goods_tag;
-        this.notify_url = notify_url;
-        this.trade_type = trade_type;
-        this.product_id = product_id;
-        this.limit_pay = limit_pay;
-        this.openid = openid;
-    }
-
-    public UnifiedorderReq() {
-    }
-
-    @Override
-    public String toString() {
-        return "UnifiedorderReq{" +
-                "appid='" + appid + '\'' +
-                ", mch_id='" + mch_id + '\'' +
-                ", device_info='" + device_info + '\'' +
-                ", nonce_str='" + nonce_str + '\'' +
-                ", sign='" + sign + '\'' +
-                ", sign_type='" + sign_type + '\'' +
-                ", body='" + body + '\'' +
-                ", detail='" + detail + '\'' +
-                ", attach='" + attach + '\'' +
-                ", out_trade_no='" + out_trade_no + '\'' +
-                ", fee_type='" + fee_type + '\'' +
-                ", total_fee=" + total_fee +
-                ", spbill_create_ip='" + spbill_create_ip + '\'' +
-                ", time_start='" + time_start + '\'' +
-                ", time_expire='" + time_expire + '\'' +
-                ", goods_tag='" + goods_tag + '\'' +
-                ", notify_url='" + notify_url + '\'' +
-                ", trade_type='" + trade_type + '\'' +
-                ", product_id='" + product_id + '\'' +
-                ", limit_pay='" + limit_pay + '\'' +
-                ", openid='" + openid + '\'' +
-                '}';
-    }
 }

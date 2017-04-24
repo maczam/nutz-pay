@@ -6,7 +6,22 @@ package org.nutz.pay.bean.weixin.resp;
  *
  * @author Howe(howechiang@gmail.com)
  */
-public class UnifiedorderResp extends Success{
+public class UnifiedorderResp extends Base {
+
+    /**
+     * 设备号
+     * 自定义参数，可以为请求支付的终端设备号等
+     * 必填
+     */
+    private String device_info;
+
+    public String getDevice_info() {
+        return device_info;
+    }
+
+    public void setDevice_info(String device_info) {
+        this.device_info = device_info;
+    }
 
     /**
      * 交易类型

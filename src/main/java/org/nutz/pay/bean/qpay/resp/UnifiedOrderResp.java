@@ -6,7 +6,7 @@ package org.nutz.pay.bean.qpay.resp;
  *
  * @author Howe(howechiang@gmail.com)
  */
-public class UnifiedOrderResp extends Success {
+public class UnifiedOrderResp extends Base {
 
     /**
      * 支付场景
