@@ -8,6 +8,9 @@ import org.nutz.log.Logs;
 import org.nutz.pay.bean.qpay.req.UnifiedOrderReq;
 import org.nutz.pay.bean.qpay.resp.UnifiedOrderResp;
 import org.nutz.pay.util.HttpUtil;
+import org.nutz.pay.util.Util;
+
+import java.util.Map;
 
 /**
  * <a href="https://qpay.qq.com/qpaywiki/showdocument.php?pid=38&docid=58">统一订单</a>功能
@@ -36,7 +39,7 @@ public class UnifiedOrderApi {
                 String resp = HttpUtil.post("https://qpay.qq.com/cgi-bin/pay/qpay_unified_order.cgi", xml);
                 return Lang.map2Object(Xmls.xmlToMap(resp), UnifiedOrderResp.class);
             } else {
-                log.error("手Q钱包UnifiedOrderResp参数校验异常: " + result);
+                log.error("手Q钱包UnifiedOrderReq参数校验异常: " + result);
                 return null;
             }
         } catch (Exception e) {
@@ -83,6 +86,42 @@ public class UnifiedOrderApi {
             return "交易类型只支持JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付";
         } else {
             return "";
+        }
+    }
+
+    /**
+     * 获取签名
+     *
+     * @param req 对象
+     * @param k   密钥
+     * @return 签名
+     */
+    public static String getSign(UnifiedOrderReq req, String k) {
+
+        if (Strings.isEmpty(checkParams(req))) {
+            Map<String, Object> params = Lang.obj2nutmap(req);
+            String s = Util.buildParmas(params, new String[]{"sign"});
+            return Lang.md5(s + k).toUpperCase();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 校验响应签名
+     *
+     * @param resp 响应对象
+     * @param k    密钥
+     * @return 判断结果
+     */
+    public static Boolean verifySign(UnifiedOrderResp resp, String k) {
+
+        Map<String, Object> params = Lang.obj2nutmap(resp);
+        String s = Util.buildParmas(params, new String[]{"sign"});
+        if (Strings.equals(Lang.md5(s + k).toUpperCase(), resp.getSign())) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
