@@ -24,9 +24,7 @@ Nutz的支付聚合便捷包
 [二维码支付](https://merchant.unionpay.com/join/product/detail?id=89)
 
 #### 京东支付
-*如果能找到文档就做，哈哈哈*
-
-[京东网关支付](http://www.chinabank.com.cn/product/payment_gateway.jsp)
+[京东钱包扫码支付](https://ft.jd.com/html/detail?id=3)
 
 #### 翼支付
 [翼支付](https://www.bestpay.com.cn/)
